@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Atul Varma - Computer Science Student | Full-Stack Developer | AI Enthusiast. Explore my projects, skills, and experience in web development, Python, and AI.">
+    <meta name="keywords"
+        content="Atul Varma, Portfolio, Web Developer, Full-Stack Developer, Python, AI, Machine Learning, Computer Science, Kanpur">
+    <meta name="author" content="Atul Varma">
+    <meta property="og:title" content="ATUL - Portfolio">
+    <meta property="og:description" content="Computer Science Student | Full-Stack Developer | AI Enthusiast">
+    <meta property="og:type" content="website">
+    <title>ATUL - Portfolio | Full-Stack Developer & AI Enthusiast</title>
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span class="brand-name">ATUL</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="btn btn-resume" href="#" onclick="downloadResume(); return false;"><i
+                                class="fas fa-download"></i> Resume</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="particles-bg" id="particles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img-container">
+                    <div class="profile-img-wrapper">
+                        <div class="profile-img">
+                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="hero-greeting">Hi, I'm <span class="highlight">ATUL</span></h1>
+                <p class="hero-tagline">Computer Science Student | Full-Stack Developer | AI Enthusiast</p>
+                <div class="typing-container">
+                    <span class="typing-prefix">I'm a </span>
+                    <span class="typing-text" id="typingText"></span>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/atul87" target="_blank" rel="noopener noreferrer" class="social-icon"
+                        data-tooltip="GitHub" aria-label="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/atul-varma-102b5b2a9" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" data-tooltip="LinkedIn" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/Atul9876/" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" data-tooltip="LeetCode" aria-label="LeetCode Profile">
+                        <i class="fas fa-code"></i>
+                    </a>
+                    <a href="https://www.naukri.com/code360/profile/AtulCodeWizard" target="_blank"
+                        rel="noopener noreferrer" class="social-icon" data-tooltip="Code360"
+                        aria-label="Code360 Profile">
+                        <i class="fas fa-laptop-code"></i>
+                    </a>
+                </div>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-hero-primary">Hire Me</a>
+                    <a href="#" onclick="downloadResume(); return false;" class="btn-hero-secondary"><i
+                            class="fas fa-download"></i> Download Resume</a>
+                </div>
+                <a href="#about" class="scroll-down">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>About <span class="highlight">Me</span></h2>
+                <p>Get to know more about who I am and what I do</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="about-img">
+                        <div class="img-wrapper">
+                            <i class="fas fa-user-graduate" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="about-content">
+                        <div class="mission-statement">
+                            <i class="fas fa-quote-left"></i>
+                            <p>Building innovative solutions through code, one project at a time.</p>
+                        </div>
+                        <h3>Hello! I'm Atul</h3>
+                        <p class="lead">A passionate third-year Computer Science student at <strong>Allenhouse Institute
+                                of Technology</strong>, Kanpur.</p>
+                        <p>With a CGPA of <strong>7.5/10</strong>, I'm deeply interested in AI, Machine Learning, and
+                            Data Analytics. I believe in continuous learning and leveraging technology to solve
+                            real-world problems.</p>
+                        <p>My journey in computer science has been driven by curiosity and a desire to innovate. I've
+                            worked on various projects ranging from e-commerce platforms to AI applications, always
+                            striving to create solutions that make a difference.</p>
+                        <p class="career-objective"><strong>Career Objective:</strong> To gain knowledge and experience
+                            with a leading corporation in a high-tech environment, enhancing my skills and contributing
+                            to business efficiency through innovative technological solutions.</p>
+
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="2">0</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="5">0</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="250">0</div>
+                                <div class="stat-label">Problems Solved</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="6">0</div>
+                                <div class="stat-label">Certifications</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>My <span class="highlight">Education</span></h2>
+                <p>Academic journey and achievements</p>
+            </div>
+            <div class="education-timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - 2027</span>
+                        <h3>B.Tech in Computer Science</h3>
+                        <h4>Allenhouse Institute of Technology</h4>
+                        <p class="grade">CGPA: <strong>7.5/10</strong></p>
+                        <p>Comprehensive program covering programming, algorithms, data structures, AI, machine
+                            learning, and software engineering.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022</span>
+                        <h3>Class 12 (Senior Secondary)</h3>
+                        <h4>B.G.V. Inter College</h4>
+                        <p class="grade">Percentage: <strong>75%</strong></p>
+                        <p>Completed higher secondary education with focus on science and mathematics.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020</span>
+                        <h3>Class 10 (Secondary)</h3>
+                        <h4>B.G.V. Inter College</h4>
+                        <p class="grade">Percentage: <strong>80%</strong></p>
+                        <p>Successfully completed secondary education with strong academic performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical <span class="highlight">Skills</span></h2>
+                <p>Technologies and tools I work with</p>
+            </div>
+            <div class="row">
+                <!-- Programming Languages -->
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python (OOP, DSA)</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">C</span>
+                                <span class="skill-percentage">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Technologies -->
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-laptop-code"></i> Web Technologies</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">CSS</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Bootstrap</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Software -->
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools &amp; Software</h3>
+                        <div class="tools-grid">
+                            <div class="tool-badge"><i class="fas fa-file-word"></i> MS Office</div>
+                            <div class="tool-badge"><i class="fas fa-file-excel"></i> Excel</div>
+                            <div class="tool-badge"><i class="fas fa-code"></i> VS Code</div>
+                            <div class="tool-badge"><i class="fas fa-palette"></i> Canva</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Tools -->
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-robot"></i> AI Tools</h3>
+                        <div class="tools-grid">
+                            <div class="tool-badge"><i class="fas fa-brain"></i> ChatGPT</div>
+                            <div class="tool-badge"><i class="fab fa-github"></i> GitHub Copilot</div>
+                            <div class="tool-badge"><i class="fas fa-gem"></i> Google Gemini</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Concepts -->
+                <div class="col-lg-12">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-microchip"></i> Core Concepts</h3>
+                        <div class="tools-grid">
+                            <div class="tool-badge"><i class="fas fa-server"></i> Operating Systems</div>
+                            <div class="tool-badge"><i class="fas fa-memory"></i> Computer Organization</div>
+                            <div class="tool-badge"><i class="fas fa-project-diagram"></i> Data Structures</div>
+                            <div class="tool-badge"><i class="fas fa-cogs"></i> Algorithms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured <span class="highlight">Projects</span></h2>
+                <p>Some of my recent work and personal projects</p>
+            </div>
+            <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Coffee Shop Website</h3>
+                            <p>Cozy escape for handcrafted brews with e-commerce functionality. Features product
+                                catalog, shopping cart, and user-friendly interface.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Bootstrap</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/atul87/Coffee-Shop" target="_blank"
+                                    rel="noopener noreferrer" class="btn-project">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn-project"
+                                    onclick="openProjectModal('Coffee Shop Website', 'A comprehensive e-commerce platform for a coffee shop. The website features a modern design with product listings, detailed product pages, shopping cart functionality, and a seamless checkout process. Built with responsive design principles to ensure optimal viewing on all devices.', ['HTML', 'CSS', 'JavaScript', 'Bootstrap'], 'https://github.com/atul87/Coffee-Shop'); return false;">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Personal Portfolio</h3>
+                            <p>Showcase of web development skills with scalable architecture and clean UI. Built to
+                                demonstrate full-stack capabilities.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/atul87/Portfolio" target="_blank" rel="noopener noreferrer"
+                                    class="btn-project">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="https://atul87.github.io/Portfolio/" target="_blank" rel="noopener noreferrer"
+                                    class="btn-project">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-ice-cream"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Kwality Wall's</h3>
+                            <p>India's beloved ice cream brand website bringing joy and sweetness. Features product
+                                showcase and brand storytelling.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Bootstrap</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/atul87/-Kwality-Wall-s" target="_blank"
+                                    rel="noopener noreferrer" class="btn-project">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn-project"
+                                    onclick="openProjectModal('Kwality Wall\'s', 'A vibrant and engaging website for India\'s favorite ice cream brand. Features include an interactive product catalog, flavor explorer, store locator, and engaging brand content. The design captures the joy and excitement associated with the brand.', ['HTML', 'CSS', 'JavaScript', 'Bootstrap'], 'https://github.com/atul87/-Kwality-Wall-s'); return false;">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card featured">
+                        <div class="featured-badge">Team Leader</div>
+                        <div class="project-img">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>RoopRani</h3>
+                            <p>Frontend website for Sarees and Kurta attire. Led a team of 4 developers to create an
+                                elegant e-commerce platform.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn-project"
+                                    onclick="openProjectModal('RoopRani', 'An elegant e-commerce platform for traditional Indian attire. As Team Leader, I coordinated a team of 4 developers to create a sophisticated shopping experience. Features include product galleries with zoom functionality, size guides, wishlist, cart management, and secure checkout. The platform showcases beautiful sarees and kurtas with detailed descriptions and high-quality imagery.', ['HTML', 'CSS', 'JavaScript', 'SQL', 'Bootstrap', 'Python'], '#'); return false;">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Recycling E-commerce</h3>
+                            <p>Platform for buying and selling used items. Managed project end-to-end from planning to
+                                implementation.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn-project"
+                                    onclick="openProjectModal('Recycling E-commerce Platform', 'A sustainable marketplace for buying and selling pre-owned items. This platform promotes circular economy by making it easy for users to give new life to used products. Features include user registration, product listings with images, category filtering, search functionality, messaging system, and secure transactions. Built with environmental consciousness in mind.', ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Python'], '#'); return false;">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications &amp; <span class="highlight">Achievements</span></h2>
+                <p>Professional certifications and learning accomplishments</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card" data-aos="fade-up">
+                    <div class="cert-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h4>Python Programming</h4>
+                    <p class="cert-issuer">Coding Ninjas</p>
+                    <p class="cert-year">2024</p>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cert-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h4>Applied Mathematics and Logic</h4>
+                    <p class="cert-issuer">Allenhouse Institute</p>
+                    <p class="cert-year">2024</p>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cert-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>Artificial Intelligence &amp; GenAI</h4>
+                    <p class="cert-issuer">IIT Kanpur</p>
+                    <p class="cert-year">2025</p>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="cert-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Web Fundamentals</h4>
+                    <p class="cert-issuer">Code with Harry</p>
+                    <p class="cert-year">2024</p>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="cert-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4>Data Structures</h4>
+                    <p class="cert-issuer">Apna College</p>
+                    <p class="cert-year">2024 - 2027</p>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="cert-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>AI Tech Confluence Workshop</h4>
+                    <p class="cert-issuer">AKTU (HCL &amp; GUVI)</p>
+                    <p class="cert-year">2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coding Profiles Section -->
+    <section id="coding-profiles" class="coding-profiles-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Coding <span class="highlight">Profiles</span></h2>
+                <p>My presence across various coding platforms</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="profile-card">
+                        <div class="profile-icon github">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h4>GitHub</h4>
+                        <p class="profile-username">@atul87</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value">5+</span>
+                                <span class="stat-label">Repositories</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">100+</span>
+                                <span class="stat-label">Contributions</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/atul87" target="_blank" class="btn-profile">View Profile</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="profile-card">
+                        <div class="profile-icon leetcode">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>LeetCode</h4>
+                        <p class="profile-username">@Atul9876</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value">150+</span>
+                                <span class="stat-label">Problems Solved</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Active</span>
+                                <span class="stat-label">Status</span>
+                            </div>
+                        </div>
+                        <a href="https://leetcode.com/u/Atul9876/" target="_blank" class="btn-profile">View Profile</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="profile-card">
+                        <div class="profile-icon code360">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Code360</h4>
+                        <p class="profile-username">@AtulCodeWizard</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value">100+</span>
+                                <span class="stat-label">Problems</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">5+</span>
+                                <span class="stat-label">Badges</span>
+                            </div>
+                        </div>
+                        <a href="https://www.naukri.com/code360/profile/AtulCodeWizard" target="_blank"
+                            class="btn-profile">View Profile</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="profile-card">
+                        <div class="profile-icon linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h4>LinkedIn</h4>
+                        <p class="profile-username">Atul Varma</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value">Professional</span>
+                                <span class="stat-label">Network</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Active</span>
+                                <span class="stat-label">Learner</span>
+                            </div>
+                        </div>
+                        <a href="https://www.linkedin.com/in/atul-varma-102b5b2a9" target="_blank"
+                            class="btn-profile">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Work <span class="highlight">Experience</span></h2>
+                <p>Professional journey and project leadership</p>
+            </div>
+            <div class="experience-timeline">
+                <div class="exp-item" data-aos="fade-up">
+                    <div class="exp-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="exp-content">
+                        <span class="exp-date">Jan 2024 - 2025</span>
+                        <h3>Team Leader - RoopRani Project</h3>
+                        <h4>Frontend Development Team</h4>
+                        <p>Led a team of 4 developers to create a comprehensive frontend website for traditional Indian
+                            attire (Sarees and Kurta). Managed project coordination, task distribution, and ensured
+                            timely delivery.</p>
+                        <div class="exp-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <ul class="achievements">
+                            <li>Successfully managed team coordination and task distribution</li>
+                            <li>Implemented responsive design and user-friendly interface</li>
+                            <li>Delivered project within timeline and requirements</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="exp-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="exp-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="exp-content">
+                        <span class="exp-date">Jan 2024 - July 2024</span>
+                        <h3>Full-Stack Developer - E-commerce Platform</h3>
+                        <h4>Recycling Products Marketplace</h4>
+                        <p>Developed a comprehensive platform for buying and selling used items. Managed the entire
+                            project lifecycle from planning and design to implementation and deployment.</p>
+                        <div class="exp-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <ul class="achievements">
+                            <li>Designed complete project architecture and database schema</li>
+                            <li>Implemented full CRUD functionality for product management</li>
+                            <li>Used ChatGPT extensively as coding assistant for problem-solving</li>
+                            <li>Created user authentication and authorization system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In <span class="highlight">Touch</span></h2>
+                <p>Let's connect and discuss opportunities</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p>Feel free to reach out for collaborations, opportunities, or just a friendly chat!</p>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Email</h4>
+                                <a href="mailto:atulverma15704@gmail.com">atulverma15704@gmail.com</a>
+                                <a href="mailto:23bcs011atul@allenhouse.in">23bcs011atul@allenhouse.in</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Phone</h4>
+                                <a href="tel:+918756890816">+91-8756890816</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Location</h4>
+                                <p>Kanpur, Uttar Pradesh, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <h4>Connect on Social Media</h4>
+                            <div class="social-links-contact">
+                                <a href="https://github.com/atul87" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/atul-varma-102b5b2a9" target="_blank"><i
+                                        class="fab fa-linkedin"></i></a>
+                                <a href="https://leetcode.com/u/Atul9876/" target="_blank"><i
+                                        class="fas fa-code"></i></a>
+                                <a href="https://www.naukri.com/code360/profile/AtulCodeWizard" target="_blank"><i
+                                        class="fas fa-laptop-code"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" id="message" rows="5" placeholder="Your Message"
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loading" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                                </span>
+                            </button>
+                            <div id="formMessage" class="form-message"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <h3>ATUL</h3>
+                        <p>Computer Science Student passionate about creating innovative solutions and learning new
+                            technologies.</p>
+                    </div>
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4>Follow Me</h4>
+                        <div class="footer-social">
+                            <a href="https://github.com/atul87" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/atul-varma-102b5b2a9" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
+                            <a href="https://leetcode.com/u/Atul9876/" target="_blank"><i class="fas fa-code"></i></a>
+                            <a href="https://www.naukri.com/code360/profile/AtulCodeWizard" target="_blank"><i
+                                    class="fas fa-laptop-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ATUL. All rights reserved. | Made with <i class="fas fa-heart"></i> by ATUL</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="projectModalDescription"></p>
+                    <h6>Technologies Used:</h6>
+                    <div id="projectModalTags" class="project-tags mb-3"></div>
+                </div>
+                <div class="modal-footer">
+                    <a id="projectModalLink" href="#" target="_blank" class="btn btn-primary">View on GitHub</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+
+</html>
