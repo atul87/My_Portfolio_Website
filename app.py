@@ -4,10 +4,11 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
+from threading import Thread
 
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static', static_folder='static')
 
 # Email Configuration
 SMTP_SERVER = "smtp.gmail.com"
@@ -20,6 +21,38 @@ RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", "your-email@gmail.com")
 @app.route("/")
 def home():
     return render_template("index.html")
+
+
+def send_email_async(name, email, subject, message):
+    """Send email in background thread to prevent timeout"""
+    try:
+        msg = MIMEMultipart()
+        msg["From"] = SENDER_EMAIL
+        msg["To"] = RECEIVER_EMAIL
+        msg["Subject"] = f"Portfolio Contact: {subject}"
+
+        body = f"""
+        New message from your portfolio:
+        
+        Name: {name}
+        Email: {email}
+        Subject: {subject}
+        
+        Message:
+        {message}
+        """
+
+        msg.attach(MIMEText(body, "plain"))
+
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=10)
+        server.starttls()
+        server.login(SENDER_EMAIL, SENDER_PASSWORD)
+        server.send_message(msg)
+        server.quit()
+
+        print(f"Email sent from {name} ({email})")
+    except Exception as e:
+        print(f"Error sending email: {e}")
 
 
 @app.route("/contact", methods=["POST"])
@@ -44,51 +77,17 @@ def handle_contact():
             400,
         )
 
-    # Send Email
-    try:
-        msg = MIMEMultipart()
-        msg["From"] = SENDER_EMAIL
-        msg["To"] = RECEIVER_EMAIL
-        msg["Subject"] = f"Portfolio Contact: {subject}"
+    # Send email asynchronously to prevent timeout
+    thread = Thread(target=send_email_async, args=(name, email, subject, message))
+    thread.daemon = True
+    thread.start()
 
-        body = f"""
-        New message from your portfolio:
-        
-        Name: {name}
-        Email: {email}
-        Subject: {subject}
-        
-        Message:
-        {message}
-        """
-
-        msg.attach(MIMEText(body, "plain"))
-
-        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-        server.starttls()
-        server.login(SENDER_EMAIL, SENDER_PASSWORD)
-        server.send_message(msg)
-        server.quit()
-
-        print(f"Email sent from {name} ({email})")
-
-        return jsonify(
-            {
-                "success": True,
-                "message": "Thank you for your message! I will get back to you soon.",
-            }
-        )
-    except Exception as e:
-        print(f"Error sending email: {e}")
-        return (
-            jsonify(
-                {
-                    "success": False,
-                    "message": "Failed to send message. Please try again.",
-                }
-            ),
-            500,
-        )
+    return jsonify(
+        {
+            "success": True,
+            "message": "Thank you for your message! I will get back to you soon.",
+        }
+    )
 
 
 if __name__ == "__main__":
