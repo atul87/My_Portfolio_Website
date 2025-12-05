@@ -2,15 +2,19 @@ from flask import Flask, render_template, request, jsonify
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
 # Email Configuration
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SENDER_EMAIL = "atulverma15704@gmail.com"  # Replace with your Gmail
-SENDER_PASSWORD = "bkpu fqbc xblx jwvo"  # Replace with Gmail App Password
-RECEIVER_EMAIL = "atulverma15704@gmail.com"
+SENDER_EMAIL = os.getenv("SENDER_EMAIL", "your-email@gmail.com")
+SENDER_PASSWORD = os.getenv("SENDER_PASSWORD", "your-app-password")
+RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", "your-email@gmail.com")
 
 
 @app.route("/")

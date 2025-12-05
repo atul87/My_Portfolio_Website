@@ -237,4 +237,4 @@ If you have any questions or need help with the portfolio, feel free to:
 
 ---
 
-**Made with ❤️ by Atul Varma**
+**Made with ❤️ by Atul**
