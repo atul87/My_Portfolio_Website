@@ -174,39 +174,36 @@ The contact form sends emails using Gmail's SMTP server. When a visitor submits 
 - Consider using environment variables for production deployment
 - For production, use a proper email service like SendGrid or Mailgun
 
-## 🚢 Deployment
+## 🚢 Deployment (GitHub Pages)
 
-### Deploying to Heroku
+This portfolio is configured as a static site, perfect for free hosting on GitHub Pages.
 
-1. Create a `Procfile`:
+### 1. Enable GitHub Pages
 
+1. Go to your repository on GitHub.
+2. Click on **Settings** > **Pages**.
+3. Under **Build and deployment** > **Source**, select **Deploy from a branch**.
+4. Select **main** branch and **/** (root) folder.
+5. Click **Save**.
+6. Your site will be live at: `https://atul87.github.io/My_Protfolio_Website/`
+
+### 2. Activate Contact Form (Formspree)
+
+Since GitHub Pages is static (no backend), the contact form uses **Formspree**.
+
+1. Go to [Formspree.io](https://formspree.io) and register (it's free).
+2. Create a new form and get your unique **Form ID**.
+3. Open `index.html` in your code.
+4. Find the form tag (around line 784):
+
+   ```html
+   <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
    ```
-   web: python app.py
-   ```
 
-2. Update `app.py` to use environment port:
+5. Replace `YOUR_FORM_ID` with your actual Form ID.
+6. Commit and push the change.
 
-   ```python
-   if __name__ == "__main__":
-       port = int(os.environ.get("PORT", 5000))
-       app.run(host='0.0.0.0', port=port)
-   ```
-
-3. Deploy:
-
-   ```bash
-   heroku create your-app-name
-   git push heroku main
-   ```
-
-### Deploying to Other Platforms
-
-This Flask application can be deployed to:
-
-- PythonAnywhere
-- AWS Elastic Beanstalk
-- Google Cloud Platform
-- DigitalOcean App Platform
+Now visitors can send you emails directly from your static website!
 
 ## 📝 License
 
