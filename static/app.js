@@ -270,19 +270,14 @@ if (contactForm) {
         btnText.style.display = 'none';
         btnLoading.style.display = 'inline-block';
 
-        // Send form data to Flask backend
+        // Send form data to Formspree or other service
         try {
-            const response = await fetch('/contact', {
+            const response = await fetch(contactForm.action, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message
-                })
+                body: new FormData(contactForm)
             });
 
             const data = await response.json();
@@ -290,11 +285,15 @@ if (contactForm) {
             btnText.style.display = 'inline-block';
             btnLoading.style.display = 'none';
 
-            if (data.success) {
-                showFormMessage(data.message, 'success');
+            if (response.ok) {
+                showFormMessage('Thank you! Your message has been sent.', 'success');
                 contactForm.reset();
             } else {
-                showFormMessage(data.message, 'error');
+                if (Object.hasOwn(data, 'errors')) {
+                    showFormMessage(data["errors"].map(error => error["message"]).join(", "), 'error');
+                } else {
+                    showFormMessage('Oops! There was a problem submitting your form.', 'error');
+                }
             }
         } catch (error) {
             btnText.style.display = 'inline-block';
