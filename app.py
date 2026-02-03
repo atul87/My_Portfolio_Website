@@ -1,14 +1,25 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, make_response
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
 from threading import Thread
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+import bleach
 
 load_dotenv()
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
+
+# Initialize Rate Limiter
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["200 per day", "50 per hour"],
+    storage_uri="memory://"
+)
 
 # Email Configuration
 SMTP_SERVER = "smtp.gmail.com"
@@ -16,6 +27,17 @@ SMTP_PORT = 587
 SENDER_EMAIL = os.getenv("SENDER_EMAIL", "your-email@gmail.com")
 SENDER_PASSWORD = os.getenv("SENDER_PASSWORD", "your-app-password")
 RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", "your-email@gmail.com")
+
+
+@app.after_request
+def add_security_headers(response):
+    """Add security headers to every response"""
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    # Strict-Transport-Security (HSTS) - Uncomment this when using HTTPS
+    # response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    return response
 
 
 @app.route("/")
@@ -56,15 +78,18 @@ def send_email_async(name, email, subject, message):
 
 
 @app.route("/contact", methods=["POST"])
+@limiter.limit("5 per minute")  # Rate limit: 5 requests per minute per IP
 def handle_contact():
     if not request.is_json:
         return jsonify({"success": False, "message": "Invalid request"}), 400
 
     data = request.get_json()
-    name = data.get("name")
-    email = data.get("email")
-    subject = data.get("subject")
-    message = data.get("message")
+    
+    # 1. Sanitize Inputs (prevent XSS)
+    name = bleach.clean(data.get("name", "").strip())
+    email = bleach.clean(data.get("email", "").strip())
+    subject = bleach.clean(data.get("subject", "").strip())
+    message = bleach.clean(data.get("message", "").strip())
 
     if not all([name, email, subject, message]):
         return jsonify({"success": False, "message": "Please fill in all fields."}), 400
@@ -88,6 +113,11 @@ def handle_contact():
             "message": "Thank you for your message! I will get back to you soon.",
         }
     )
+
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return jsonify({"success": False, "message": "Rate limit exceeded. Please try again later."}), 429
 
 
 if __name__ == "__main__":
