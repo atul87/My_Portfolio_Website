@@ -259,14 +259,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll Progress Bar
-const scrollProgress = document.getElementById('scrollProgress');
-
-window.addEventListener('scroll', () => {
-    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (window.scrollY / windowHeight) * 100;
-    scrollProgress.style.width = scrolled + '%';
-});
+// Removed duplicate Scroll Progress Bar code - already implemented above with null check
 
 // Stats Counter Animation
 const statNumbers = document.querySelectorAll('.stat-number');
@@ -698,26 +691,7 @@ console.log('%c Thanks for visiting! Feel free to connect with me. ', 'color: #0
 
 // ========== UI/UX ENHANCEMENTS ==========
 
-// Smooth scroll with offset for fixed navbar
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 80;
-            const targetPosition = target.offsetTop - offset;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-
-            // Close mobile menu
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
-            }
-        }
-    });
+// Removed duplicate smooth scroll code - already defined at line 243
 });
 
 // Enhanced form validation with real-time feedback
