@@ -692,7 +692,6 @@ console.log('%c Thanks for visiting! Feel free to connect with me. ', 'color: #0
 // ========== UI/UX ENHANCEMENTS ==========
 
 // Removed duplicate smooth scroll code - already defined at line 243
-});
 
 // Enhanced form validation with real-time feedback
 const contactFormEnhanced = document.getElementById('contactForm');
