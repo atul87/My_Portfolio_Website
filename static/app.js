@@ -176,7 +176,7 @@ for (let i = 0; i < particleCount; i++) {
     const duration = Math.random() * 15 + 15;
     const delay = Math.random() * 5;
     const opacity = Math.random() * 0.5 + 0.3;
-    
+
     particle.style.cssText = `
         position: absolute;
         width: ${size}px;
@@ -223,10 +223,10 @@ magneticButtons.forEach(button => {
         const rect = button.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        
+
         button.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
     });
-    
+
     button.addEventListener('mouseleave', () => {
         button.style.transform = 'translate(0, 0)';
     });
@@ -234,7 +234,7 @@ magneticButtons.forEach(button => {
 
 // Resume Download Function
 function downloadResume() {
-    window.open('Atul_Varma_Resume.pdf', '_blank');
+    window.open('./static/Atul_Varma_Resume.pdf', '_blank');
 }
 
 // Contact Form Handling with Enhanced Validation
@@ -421,7 +421,7 @@ function addTiltEffect(element) {
         const rotateY = (centerX - x) / 15;
 
         element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-        
+
         // Update CSS variable for spotlight effect
         element.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
         element.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
@@ -489,12 +489,12 @@ function initCursor() {
     function animateCursor() {
         cursorX += (mouseX - cursorX) * 0.2;
         cursorY += (mouseY - cursorY) * 0.2;
-        
+
         cursorDot.style.left = cursorX + 'px';
         cursorDot.style.top = cursorY + 'px';
         cursorOutline.style.left = (cursorX - 20) + 'px';
         cursorOutline.style.top = (cursorY - 20) + 'px';
-        
+
         requestAnimationFrame(animateCursor);
     }
     animateCursor();
@@ -544,7 +544,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetPosition,
                 behavior: 'smooth'
             });
-            
+
             // Close mobile menu
             const navbarCollapse = document.querySelector('.navbar-collapse');
             if (navbarCollapse.classList.contains('show')) {
@@ -558,10 +558,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const contactFormEnhanced = document.getElementById('contactForm');
 if (contactFormEnhanced) {
     const inputs = contactFormEnhanced.querySelectorAll('input, textarea');
-    
+
     inputs.forEach(input => {
         // Real-time validation
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             if (this.value.length > 0) {
                 if (this.checkValidity()) {
                     this.style.borderColor = 'var(--primary-color)';
@@ -572,13 +572,13 @@ if (contactFormEnhanced) {
                 this.style.borderColor = '';
             }
         });
-        
+
         // Focus effects
-        input.addEventListener('focus', function() {
+        input.addEventListener('focus', function () {
             this.parentElement.style.transform = 'scale(1.01)';
         });
-        
-        input.addEventListener('blur', function() {
+
+        input.addEventListener('blur', function () {
             this.parentElement.style.transform = 'scale(1)';
         });
     });
@@ -602,7 +602,7 @@ function animateValue(element, start, end, duration) {
     const range = end - start;
     const increment = range / (duration / 16);
     let current = start;
-    
+
     const timer = setInterval(() => {
         current += increment;
         if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
@@ -649,7 +649,7 @@ function createRipple(event) {
     const size = Math.max(rect.width, rect.height);
     const x = event.clientX - rect.left - size / 2;
     const y = event.clientY - rect.top - size / 2;
-    
+
     ripple.style.cssText = `
         position: absolute;
         width: ${size}px;
@@ -661,11 +661,11 @@ function createRipple(event) {
         pointer-events: none;
         animation: ripple 0.6s ease-out;
     `;
-    
+
     button.style.position = 'relative';
     button.style.overflow = 'hidden';
     button.appendChild(ripple);
-    
+
     setTimeout(() => ripple.remove(), 600);
 }
 
@@ -718,9 +718,9 @@ function showToast(message, type = 'success') {
         animation: slideInRight 0.3s ease;
         font-weight: 500;
     `;
-    
+
     document.body.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.style.animation = 'slideOutRight 0.3s ease';
         setTimeout(() => toast.remove(), 300);
@@ -797,8 +797,7 @@ function announcePageChange(message) {
 }
 
 // Track active section for navigation
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
+// Using the same sections and navLinks variables declared earlier
 
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -872,7 +871,7 @@ function renderCommands(cmds) {
             <span>${cmd.name}</span>
         </div>
     `).join('');
-    
+
     results.querySelectorAll('.command-item').forEach(item => {
         item.addEventListener('click', () => {
             cmds[item.dataset.index].action();
@@ -960,7 +959,7 @@ terminal.querySelector('.terminal-input').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         const cmd = e.target.value.trim().toLowerCase();
         const output = terminalCommands[cmd];
-        
+
         if (typeof output === 'function') {
             output();
         } else if (output) {
@@ -975,7 +974,7 @@ terminal.querySelector('.terminal-input').addEventListener('keypress', (e) => {
             line.textContent = `Command not found: ${cmd}`;
             terminal.querySelector('.terminal-body').insertBefore(line, terminal.querySelector('.terminal-input-line'));
         }
-        
+
         e.target.value = '';
         terminal.querySelector('.terminal-body').scrollTop = terminal.querySelector('.terminal-body').scrollHeight;
     }
@@ -1016,7 +1015,7 @@ function createConfetti() {
         confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
         confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
         document.body.appendChild(confetti);
-        
+
         setTimeout(() => confetti.remove(), 5000);
     }
 }
@@ -1100,14 +1099,14 @@ const drops = Array(Math.floor(columns)).fill(1);
 function drawCodeRain() {
     ctx.fillStyle = 'rgba(10, 14, 39, 0.05)';
     ctx.fillRect(0, 0, codeRain.width, codeRain.height);
-    
+
     ctx.fillStyle = 'rgba(0, 171, 240, 0.5)';
     ctx.font = fontSize + 'px monospace';
-    
+
     for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        
+
         if (drops[i] * fontSize > codeRain.height && Math.random() > 0.975) {
             drops[i] = 0;
         }
@@ -1127,31 +1126,31 @@ if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
     recognition.continuous = false;
     recognition.lang = 'en-US';
-    
+
     const voiceBtn = document.createElement('button');
     voiceBtn.className = 'fab-option';
     voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
     voiceBtn.title = 'Voice Commands';
     voiceBtn.style.cssText = 'position: fixed; bottom: 200px; right: 40px; z-index: 1000;';
     document.body.appendChild(voiceBtn);
-    
+
     voiceBtn.addEventListener('click', () => {
         recognition.start();
         voiceBtn.style.background = 'var(--primary-color)';
         voiceBtn.style.color = 'white';
     });
-    
+
     recognition.onresult = (event) => {
         const command = event.results[0][0].transcript.toLowerCase();
-        
+
         if (command.includes('about')) document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
         else if (command.includes('project')) document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
         else if (command.includes('contact')) document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         else if (command.includes('home')) document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
-        
+
         showToast(`Voice command: ${command}`, 'success');
     };
-    
+
     recognition.onend = () => {
         voiceBtn.style.background = '';
         voiceBtn.style.color = '';
@@ -1182,7 +1181,7 @@ function initBackgroundEffects() {
     const gradientMesh = document.createElement('div');
     gradientMesh.className = 'gradient-mesh';
     document.body.insertBefore(gradientMesh, document.body.firstChild);
-    
+
     // 2. Geometric Shapes
     const geometricShapes = document.createElement('div');
     geometricShapes.className = 'geometric-shapes';
@@ -1192,7 +1191,7 @@ function initBackgroundEffects() {
         <div class="shape shape-3"></div>
     `;
     document.body.insertBefore(geometricShapes, document.body.firstChild);
-    
+
     // 3. Aurora Effect
     const aurora = document.createElement('div');
     aurora.className = 'aurora';
@@ -1202,7 +1201,7 @@ function initBackgroundEffects() {
         <div class="aurora-layer"></div>
     `;
     document.body.insertBefore(aurora, document.body.firstChild);
-    
+
     // 4. Glowing Orbs
     const glowingOrbs = document.createElement('div');
     glowingOrbs.className = 'glowing-orbs';
@@ -1212,25 +1211,25 @@ function initBackgroundEffects() {
         <div class="orb orb-3"></div>
     `;
     document.body.insertBefore(glowingOrbs, document.body.firstChild);
-    
+
     // 5. Hexagon Pattern
     const hexagonPattern = document.createElement('div');
     hexagonPattern.className = 'hexagon-pattern';
     document.body.insertBefore(hexagonPattern, document.body.firstChild);
-    
+
     // 6. Grid Lines
     const gridLines = document.createElement('div');
     gridLines.className = 'grid-lines';
     document.body.insertBefore(gridLines, document.body.firstChild);
-    
+
     // 7. Nebula Effect
     const nebula = document.createElement('div');
     nebula.className = 'nebula';
     document.body.insertBefore(nebula, document.body.firstChild);
-    
+
     // 8. Starfield
     createStarfield();
-    
+
     // 9. Particle Network Canvas
     createParticleNetwork();
 }
@@ -1239,7 +1238,7 @@ function initBackgroundEffects() {
 function createStarfield() {
     const starfield = document.createElement('div');
     starfield.className = 'starfield';
-    
+
     for (let i = 0; i < 100; i++) {
         const star = document.createElement('div');
         star.className = 'star';
@@ -1248,7 +1247,7 @@ function createStarfield() {
         star.style.animationDelay = Math.random() * 3 + 's';
         starfield.appendChild(star);
     }
-    
+
     document.body.insertBefore(starfield, document.body.firstChild);
 }
 
@@ -1257,15 +1256,15 @@ function createParticleNetwork() {
     const canvas = document.createElement('canvas');
     canvas.className = 'particle-network';
     document.body.insertBefore(canvas, document.body.firstChild);
-    
+
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    
+
     const particles = [];
     const particleCount = 50;
     const maxDistance = 150;
-    
+
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -1274,15 +1273,15 @@ function createParticleNetwork() {
             this.vy = (Math.random() - 0.5) * 0.5;
             this.radius = Math.random() * 2 + 1;
         }
-        
+
         update() {
             this.x += this.vx;
             this.y += this.vy;
-            
+
             if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
             if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
         }
-        
+
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -1290,18 +1289,18 @@ function createParticleNetwork() {
             ctx.fill();
         }
     }
-    
+
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
-    
+
     function connectParticles() {
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (distance < maxDistance) {
                     ctx.beginPath();
                     ctx.strokeStyle = `rgba(0, 171, 240, ${1 - distance / maxDistance})`;
@@ -1313,21 +1312,21 @@ function createParticleNetwork() {
             }
         }
     }
-    
+
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         particles.forEach(particle => {
             particle.update();
             particle.draw();
         });
-        
+
         connectParticles();
         requestAnimationFrame(animate);
     }
-    
+
     animate();
-    
+
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -1342,7 +1341,7 @@ function switchBackground() {
     document.querySelectorAll('.gradient-mesh, .aurora, .nebula, .liquid-bg').forEach(el => {
         el.style.opacity = '0';
     });
-    
+
     currentBg = (currentBg + 1) % backgrounds.length;
     const activeBg = document.querySelector(`.${backgrounds[currentBg]}`);
     if (activeBg) {
@@ -1376,14 +1375,14 @@ function monitorPerformance() {
     const currentTime = performance.now();
     fps = Math.round(1000 / (currentTime - lastTime));
     lastTime = currentTime;
-    
+
     // Reduce effects if FPS drops below 30
     if (fps < 30) {
         document.querySelectorAll('.shape, .orb, .aurora-layer').forEach(el => {
             el.style.animationDuration = '30s';
         });
     }
-    
+
     requestAnimationFrame(monitorPerformance);
 }
 

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atul Varma - Resume</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #00abf0;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #112e42;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .title {
+            font-size: 18px;
+            color: #00abf0;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #00abf0;
+            text-decoration: none;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #112e42;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #00abf0;
+        }
+
+        .summary {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+
+        .education-item,
+        .experience-item,
+        .project-item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .item-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #112e42;
+        }
+
+        .item-date {
+            font-size: 14px;
+            color: #00abf0;
+            font-weight: 500;
+        }
+
+        .item-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .item-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .item-description li {
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #00abf0;
+        }
+
+        .skill-category h4 {
+            font-size: 14px;
+            color: #112e42;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .skill-category p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .cert-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .cert-item h4 {
+            font-size: 14px;
+            color: #112e42;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .cert-item p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tech-tag {
+            background: #e3f2fd;
+            color: #0066ff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>ATUL VARMA</h1>
+        <div class="title">Computer Science Student | Full-Stack Developer | AI Enthusiast</div>
+        <div class="contact-info">
+            <span>📧 atulverma15704@gmail.com</span>
+            <span>📞 +91-8756890816</span>
+            <span>📍 Kanpur, Uttar Pradesh, India</span>
+        </div>
+        <div class="contact-info" style="margin-top: 8px;">
+            <a href="https://github.com/atul87" target="_blank">🔗 GitHub: github.com/atul87</a>
+            <a href="https://www.linkedin.com/in/atul-varma-102b5b2a9" target="_blank">🔗 LinkedIn</a>
+            <a href="https://leetcode.com/u/Atul9876/" target="_blank">🔗 LeetCode</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">CAREER OBJECTIVE</h2>
+        <p class="summary">
+            Passionate third-year Computer Science student seeking to gain knowledge and experience with a leading
+            corporation in a high-tech environment.
+            Dedicated to enhancing my skills in AI, Machine Learning, and Full-Stack Development while contributing to
+            business efficiency through innovative
+            technological solutions. Strong foundation in Python, JavaScript, and web technologies with hands-on
+            experience in leading development teams and
+            building scalable applications.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">EDUCATION</h2>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div class="item-title">Bachelor of Technology in Computer Science</div>
+                <div class="item-date">2023 - 2027</div>
+            </div>
+            <div class="item-subtitle">Allenhouse Institute of Technology, Kanpur</div>
+            <div class="item-description">
+                <strong>CGPA: 7.5/10</strong><br>
+                Comprehensive program covering programming, algorithms, data structures, AI, machine learning, and
+                software engineering.
+            </div>
+        </div>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div class="item-title">Class 12 (Senior Secondary)</div>
+                <div class="item-date">2022</div>
+            </div>
+            <div class="item-subtitle">B.G.V. Inter College</div>
+            <div class="item-description">
+                <strong>Percentage: 75%</strong> - Completed higher secondary education with focus on science and
+                mathematics.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">TECHNICAL SKILLS</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Programming Languages</h4>
+                <p>Python (OOP, DSA), Java, C</p>
+            </div>
+            <div class="skill-category">
+                <h4>Web Technologies</h4>
+                <p>HTML5, CSS3, JavaScript, Bootstrap, SQL</p>
+            </div>
+            <div class="skill-category">
+                <h4>Tools & Software</h4>
+                <p>MS Office, Excel, VS Code, Canva, Git/GitHub</p>
+            </div>
+            <div class="skill-category">
+                <h4>AI Tools</h4>
+                <p>ChatGPT, GitHub Copilot, Google Gemini</p>
+            </div>
+            <div class="skill-category">
+                <h4>Core Concepts</h4>
+                <p>Operating Systems, Computer Organization, Data Structures, Algorithms</p>
+            </div>
+            <div class="skill-category">
+                <h4>Platforms</h4>
+                <p>LeetCode (150+ problems), Code360 (100+ problems)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">WORK EXPERIENCE</h2>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div class="item-title">Team Leader - RoopRani Project</div>
+                <div class="item-date">Jan 2024 - 2025</div>
+            </div>
+            <div class="item-subtitle">Frontend Development Team (4 members)</div>
+            <div class="item-description">
+                <ul>
+                    <li>Led a team of 4 developers to create a comprehensive e-commerce website for traditional Indian
+                        attire (Sarees and Kurtas)</li>
+                    <li>Managed project coordination, task distribution, and ensured timely delivery</li>
+                    <li>Implemented responsive design and user-friendly interface using HTML, CSS, JavaScript,
+                        Bootstrap, Python, and SQL</li>
+                    <li>Successfully delivered project within timeline meeting all requirements</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Bootstrap</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div class="item-title">Full-Stack Developer - E-commerce Platform</div>
+                <div class="item-date">Jan 2024 - July 2024</div>
+            </div>
+            <div class="item-subtitle">Recycling Products Marketplace</div>
+            <div class="item-description">
+                <ul>
+                    <li>Developed a comprehensive platform for buying and selling used items promoting circular economy
+                    </li>
+                    <li>Designed complete project architecture and database schema</li>
+                    <li>Implemented full CRUD functionality for product management</li>
+                    <li>Created user authentication and authorization system</li>
+                    <li>Utilized ChatGPT extensively as coding assistant for problem-solving</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">PROJECTS</h2>
+
+        <div class="project-item">
+            <div class="item-header">
+                <div class="item-title">Coffee Shop E-commerce Website</div>
+                <div class="item-date">2024</div>
+            </div>
+            <div class="item-description">
+                Comprehensive e-commerce platform featuring product listings, shopping cart, and seamless checkout
+                process.
+                Built with responsive design for optimal viewing on all devices.
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Bootstrap</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="item-header">
+                <div class="item-title">Personal Portfolio Website</div>
+                <div class="item-date">2024</div>
+            </div>
+            <div class="item-description">
+                Interactive portfolio showcasing web development skills with advanced features including command
+                palette, terminal widget,
+                voice commands, and stunning background effects. Demonstrates full-stack capabilities.
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Advanced UI/UX</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="item-header">
+                <div class="item-title">Kwality Wall's Website</div>
+                <div class="item-date">2024</div>
+            </div>
+            <div class="item-description">
+                Vibrant website for India's favorite ice cream brand featuring interactive product catalog, flavor
+                explorer, and engaging brand content.
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">CERTIFICATIONS</h2>
+        <div class="certifications-grid">
+            <div class="cert-item">
+                <h4>Python Programming</h4>
+                <p>Coding Ninjas - 2024</p>
+            </div>
+            <div class="cert-item">
+                <h4>Artificial Intelligence & GenAI</h4>
+                <p>IIT Kanpur - 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Applied Mathematics and Logic</h4>
+                <p>Allenhouse Institute - 2024</p>
+            </div>
+            <div class="cert-item">
+                <h4>Web Fundamentals</h4>
+                <p>Code with Harry - 2024</p>
+            </div>
+            <div class="cert-item">
+                <h4>Data Structures</h4>
+                <p>Apna College - 2024-2027</p>
+            </div>
+            <div class="cert-item">
+                <h4>AI Tech Confluence Workshop</h4>
+                <p>AKTU (HCL & GUVI) - 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">ACHIEVEMENTS & ACTIVITIES</h2>
+        <div class="item-description">
+            <ul>
+                <li><strong>Problem Solving:</strong> Solved 250+ coding problems across LeetCode and Code360</li>
+                <li><strong>GitHub Contributions:</strong> 100+ contributions across 5+ repositories</li>
+                <li><strong>Team Leadership:</strong> Successfully led development team of 4 members</li>
+                <li><strong>Continuous Learning:</strong> Actively learning AI/ML and staying updated with latest web
+                    technologies</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

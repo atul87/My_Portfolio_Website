@@ -781,9 +781,10 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="contact-form">
-                        <!-- Formspree Integration -->
-                        <!-- REPLACE "https://formspree.io/f/YOUR_FORM_ID" WITH YOUR ACTUAL FORMSPREE ID FROM https://formspree.io/ -->
-                        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <!-- Note: Contact form requires backend configuration -->
+                        <!-- To enable: Sign up at https://formspree.io/ and replace YOUR_FORM_ID with your actual ID -->
+                        <!-- For now, form validation works but submission is disabled for static hosting -->
+                        <form id="contactForm" action="#" method="POST" onsubmit="event.preventDefault(); showFormMessage('Contact form requires backend setup. Please reach out via email directly.', 'error'); return false;">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
