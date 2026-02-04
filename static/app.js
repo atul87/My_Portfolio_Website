@@ -259,70 +259,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Removed duplicate Scroll Progress Bar code - already implemented above with null check
-
-// Stats Counter Animation
-const statNumbers = document.querySelectorAll('.stat-number');
-let statsAnimated = false;
-
-function animateStats() {
-    statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
-
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                stat.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                stat.textContent = target;
-            }
-        };
-
-        updateCounter();
-    });
-}
-
-const statsSection = document.querySelector('.stats-container');
-if (statsSection) {
-    const observerOptions = {
-        threshold: 0.5
-    };
-
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !statsAnimated) {
-                animateStats();
-                statsAnimated = true;
-            }
-        });
-    }, observerOptions);
-
-    statsObserver.observe(statsSection);
-}
-
-// Skills Progress Bar Animation
-const skillBars = document.querySelectorAll('.skill-progress');
-
-const observerOptions = {
-    threshold: 0.5
-};
-
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const progress = entry.target.getAttribute('data-progress');
-            entry.target.style.width = progress + '%';
-        }
-    });
-}, observerOptions);
-
-skillBars.forEach(bar => {
-    skillObserver.observe(bar);
-});
+// Removed duplicate Stats Counter Animation and Skills Progress Bar Animation code
+// Already implemented above (lines 186-242) with proper null checks
 
 // Enhanced Particle Animation
 const particlesContainer = document.getElementById('particles');
