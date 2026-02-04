@@ -1,4 +1,93 @@
-// Typing Animation
+// ========== UTILITY FUNCTIONS & ERROR HANDLING ==========
+
+// Toast Notification System
+function showToast(message, type = 'info', title = '') {
+    const toastContainer = document.getElementById('toastContainer');
+    if (!toastContainer) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+
+    const icons = {
+        success: 'fa-check-circle',
+        error: 'fa-exclamation-circle',
+        warning: 'fa-exclamation-triangle',
+        info: 'fa-info-circle'
+    };
+
+    const titles = {
+        success: title || 'Success',
+        error: title || 'Error',
+        warning: title || 'Warning',
+        info: title || 'Info'
+    };
+
+    toast.innerHTML = `
+        <i class="fas ${icons[type]} toast-icon"></i>
+        <div class="toast-content">
+            <div class="toast-title">${titles[type]}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" aria-label="Close notification">×</button>
+    `;
+
+    toastContainer.appendChild(toast);
+
+    // Close button handler
+    const closeBtn = toast.querySelector('.toast-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => removeToast(toast));
+    }
+
+    // Auto remove after 5 seconds
+    setTimeout(() => removeToast(toast), 5000);
+}
+
+function removeToast(toast) {
+    if (!toast) return;
+    toast.classList.add('removing');
+    setTimeout(() => {
+        if (toast.parentElement) {
+            toast.parentElement.removeChild(toast);
+        }
+    }, 300);
+}
+
+// Loading Screen Handler
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }, 500);
+    }
+});
+
+// Safe DOM Query with Null Check
+function safeQuery(selector) {
+    try {
+        return document.querySelector(selector);
+    } catch (error) {
+        console.warn(`Element not found: ${selector}`);
+        return null;
+    }
+}
+
+function safeQueryAll(selector) {
+    try {
+        return document.querySelectorAll(selector);
+    } catch (error) {
+        console.warn(`Elements not found: ${selector}`);
+        return [];
+    }
+}
+
+// ========== TYPING ANIMATION ==========
+
+// Typing Animation with Null Check
 const typingText = document.getElementById('typingText');
 const phrases = ['Python Developer', 'Web Developer', 'Problem Solver', 'AI Enthusiast', 'Full-Stack Developer'];
 let phraseIndex = 0;
@@ -7,6 +96,8 @@ let isDeleting = false;
 let typingSpeed = 100;
 
 function typeText() {
+    if (!typingText) return;
+
     const currentPhrase = phrases[phraseIndex];
 
     if (isDeleting) {
@@ -32,48 +123,123 @@ function typeText() {
 }
 
 // Initialize typing animation
-typeText();
+if (typingText) {
+    typeText();
+}
 
-// Navbar Scroll Effect
+// ========== NAVBAR & SCROLL EFFECTS ==========
+
+// Navbar Scroll Effect with Null Check
 const navbar = document.getElementById('mainNav');
 let lastScrollTop = 0;
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+        if (scrollTop > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
 
-    lastScrollTop = scrollTop;
-});
+        lastScrollTop = scrollTop;
+    });
+}
 
-// Active Navigation Link
+// Active Navigation Link  with Null Checks
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
 
-window.addEventListener('scroll', () => {
-    let current = '';
+if (sections.length > 0 && navLinks.length > 0) {
+    window.addEventListener('scroll', () => {
+        let current = '';
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
     });
+}
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
+// Scroll Progress Bar with Null Check
+const scrollProgress = document.getElementById('scrollProgress');
+
+if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.pageYOffset / windowHeight) * 100;
+        scrollProgress.style.width = scrolled + '%';
     });
-});
+}
 
-// Smooth Scroll for Navigation Links
+// Stats Counter Animation with Null Checks
+const statNumbers = document.querySelectorAll('.stat-number');
+
+if (statNumbers.length > 0) {
+    function animateStats() {
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            if (isNaN(target)) return;
+
+            let count = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    stat.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    stat.textContent = Math.floor(count);
+                }
+            }, 30);
+        });
+    }
+
+    const statsSection = document.querySelector('.stats-container');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(statsSection);
+    }
+}
+
+// Skills Progress Bar Animation with Null Checks
+const skillBars = document.querySelectorAll('.skill-progress');
+
+if (skillBars.length > 0) {
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const width = bar.getAttribute('data-width') || '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+                skillsObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    skillBars.forEach(bar => skillsObserver.observe(bar));
+}
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
